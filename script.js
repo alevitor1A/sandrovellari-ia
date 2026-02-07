@@ -10,7 +10,7 @@ async function sendMessage() {
     input.value = '';
 
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('https://kamilah-untransportable-semimalignantly.ngrok-free.dev/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message })
