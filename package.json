@@ -1,0 +1,7 @@
+{
+  "name": "sandrovellari-ia",
+  "version": "2.0.0",
+  "description": "SandroVellari IA — Backend Vercel",
+  "type": "module",
+  "engines": { "node": "18.x" }
+}

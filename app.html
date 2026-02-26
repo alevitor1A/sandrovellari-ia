@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SandroVellari IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --black:#000; --white:#fff; --gray:#f4f4f4; --mid:#e0e0e0; --muted:#999; }
+body { background:var(--white); font-family:'Source Serif 4',serif; height:100vh; display:flex; overflow:hidden; color:var(--black); }
+
+/* SIDEBAR */
+.sidebar { width:220px; min-width:220px; background:var(--black); color:var(--white); display:flex; flex-direction:column; }
+.sb-logo { padding:22px 18px 16px; border-bottom:1px solid #1a1a1a; }
+.sb-logo-main { font-family:'Playfair Display',serif; font-size:19px; font-weight:900; letter-spacing:-0.5px; }
+.sb-logo-sub { font-size:8px; opacity:.35; letter-spacing:3px; text-transform:uppercase; margin-top:3px; }
+.sb-user { padding:12px 18px; border-bottom:1px solid #1a1a1a; display:flex; align-items:center; gap:9px; }
+.sb-av { width:32px; height:32px; border-radius:50%; background:#222; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; overflow:hidden; flex-shrink:0; }
+.sb-av img { width:100%; height:100%; object-fit:cover; }
+.sb-name { font-size:12px; opacity:.8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sb-nav { padding:14px 10px 6px; }
+.sb-lbl { font-size:8px; letter-spacing:3px; text-transform:uppercase; opacity:.3; padding:0 8px; margin-bottom:4px; display:block; }
+.sb-item { display:flex; align-items:center; gap:8px; padding:8px 10px; cursor:pointer; font-size:12px; opacity:.55; transition:all .15s; border:1px solid transparent; margin-bottom:1px; }
+.sb-item:hover { opacity:1; background:#111; }
+.sb-item.active { opacity:1; background:var(--white); color:var(--black); }
+.sb-online { padding:6px 10px; flex:1; overflow-y:auto; scrollbar-width:none; }
+.o-user { display:flex; align-items:center; gap:6px; padding:6px 8px; cursor:pointer; opacity:.6; transition:.15s; }
+.o-user:hover { opacity:1; background:#111; }
+.o-dot { width:5px; height:5px; background:#4ade80; border-radius:50%; flex-shrink:0; }
+.o-name { font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sb-logout { padding:12px 18px; border-top:1px solid #1a1a1a; font-size:10px; opacity:.35; cursor:pointer; letter-spacing:1px; text-transform:uppercase; transition:.15s; }
+.sb-logout:hover { opacity:1; }
+
+/* MAIN */
+.main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+.ch { padding:16px 22px; border-bottom:1.5px solid #000; display:flex; align-items:center; justify-content:space-between; }
+.ch-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; }
+.ch-sub { font-size:9px; color:var(--muted); margin-top:2px; letter-spacing:1px; }
+.vbtns { display:flex; gap:7px; }
+.vb { width:36px; height:36px; border:1.5px solid #000; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:15px; transition:.15s; }
+.vb:hover,.vb.on { background:#000; color:#fff; }
+.vb.pulse { background:#000; color:#fff; animation:p 1s infinite; }
+@keyframes p { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* VBAR */
+.vbar { padding:6px 22px; background:#000; color:#fff; font-size:10px; letter-spacing:1px; display:none; align-items:center; gap:6px; }
+.vbar.show { display:flex; }
+.vbar-dot { width:6px; height:6px; background:#4ade80; border-radius:50%; animation:p 1s infinite; }
+
+/* AVATAR */
+.av-wrap { padding:16px 22px; border-bottom:1.5px solid #000; background:#fafafa; display:none; align-items:center; gap:18px; }
+.av-wrap.show { display:flex; }
+#avcanvas { border:1.5px solid #000; }
+.av-info-name { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; }
+.av-info-state { font-size:11px; color:var(--muted); margin-top:2px; letter-spacing:1px; }
+
+/* MESSAGES */
+.msgs { flex:1; overflow-y:auto; padding:20px 22px; display:flex; flex-direction:column; gap:12px; scrollbar-width:thin; scrollbar-color:#ddd transparent; }
+.msg { max-width:74%; animation:mi .2s ease; }
+@keyframes mi { from{opacity:0;transform:translateY(7px)} to{opacity:1;transform:translateY(0)} }
+.msg.user { align-self:flex-end; }
+.msg.ai,.msg.other { align-self:flex-start; }
+.msg-sender { font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+.bubble { padding:12px 15px; border:1.5px solid #000; font-size:13px; line-height:1.65; }
+.msg.user .bubble { background:#000; color:#fff; }
+.msg.ai .bubble { background:#fff; }
+.msg.other .bubble { background:var(--gray); border-color:var(--mid); }
+.msg-time { font-size:9px; color:var(--muted); margin-top:3px; text-align:right; }
+
+/* TYPING */
+.typing { display:flex; gap:4px; padding:12px 15px; border:1.5px solid #000; max-width:60px; align-self:flex-start; }
+.dot { width:5px; height:5px; background:#000; border-radius:50%; animation:td 1.2s infinite; }
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes td { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+/* INPUT */
+.inp-area { padding:16px 22px; border-top:1.5px solid #000; display:flex; gap:9px; align-items:flex-end; }
+.inp-box { flex:1; border:1.5px solid #000; padding:11px 14px; font-family:'Source Serif 4',serif; font-size:13px; resize:none; outline:none; min-height:46px; max-height:130px; line-height:1.5; }
+.send { width:46px; height:46px; background:#000; color:#fff; border:none; cursor:pointer; font-size:17px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:.15s; }
+.send:hover { opacity:.8; }
+
+/* PANELS */
+.panel { display:none; height:100%; flex-direction:column; }
+.panel.active { display:flex; }
+
+/* API STATUS */
+.api-badge { position:fixed; top:12px; right:12px; padding:4px 10px; font-size:9px; letter-spacing:1px; text-transform:uppercase; border:1px solid; z-index:999; }
+.api-badge.groq { background:#000; color:#4ade80; border-color:#4ade80; }
+.api-badge.demo { background:#000; color:#fbbf24; border-color:#fbbf24; }
+
+/* TOAST */
+.toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#000; color:#fff; padding:9px 20px; font-size:11px; z-index:9999; opacity:0; transition:.3s; pointer-events:none; }
+.toast.show { opacity:1; }
+
+@media(max-width:580px){
+  .sidebar{width:180px;min-width:180px;}
+  .msgs{padding:12px 14px;}
+  .inp-area{padding:10px 12px;}
+  .msg{max-width:90%;}
+}
+</style>
+</head>
+<body>
+
+<div class="api-badge demo" id="api-badge">demo</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-main">SandroVellari</div>
+    <div class="sb-logo-sub">Inteligência Artificial</div>
+  </div>
+  <div class="sb-user">
+    <div class="sb-av" id="sb-av">S</div>
+    <div class="sb-name" id="sb-name">carregando...</div>
+  </div>
+  <div class="sb-nav">
+    <span class="sb-lbl">Modos</span>
+    <div class="sb-item active" id="tab-ai" onclick="go('ai')">🤖 Sandro IA</div>
+    <div class="sb-item" id="tab-public" onclick="go('public')">🌐 Chat Universal</div>
+    <div class="sb-item" id="tab-private" onclick="go('private')">🔒 Chat Privado</div>
+    <div class="sb-item" id="tab-assistant" onclick="go('assistant')">⚡ Assistente Web</div>
+  </div>
+  <span class="sb-lbl" style="padding:10px 18px 3px;">Online agora</span>
+  <div class="sb-online" id="sb-online">
+    <div style="padding:6px 8px;font-size:10px;opacity:.3;">Ninguém mais online</div>
+  </div>
+  <div class="sb-logout" onclick="doLogout()">Sair da conta</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SANDRO IA -->
+  <div class="panel active" id="panel-ai">
+    <div class="ch">
+      <div>
+        <div class="ch-title">Sandro IA</div>
+        <div class="ch-sub">ASSISTENTE CONVERSACIONAL · VOZ · MEMÓRIA</div>
+      </div>
+      <div class="vbtns">
+        <button class="vb" id="btn-mic" onclick="toggleMic()" title="Microfone">🎤</button>
+        <button class="vb on" id="btn-tts" onclick="toggleTTS()" title="Voz">🔊</button>
+        <button class="vb" id="btn-av" onclick="toggleAv()" title="Avatar">👤</button>
+      </div>
+    </div>
+    <div class="vbar" id="vbar"><div class="vbar-dot"></div><span id="vbar-txt">Ouvindo...</span></div>
+    <div class="av-wrap" id="av-wrap">
+      <canvas id="avcanvas" width="72" height="72"></canvas>
+      <div>
+        <div class="av-info-name">Sandro</div>
+        <div class="av-info-state" id="av-state">esperando...</div>
+      </div>
+    </div>
+    <div class="msgs" id="ai-msgs">
+      <div class="msg ai">
+        <div class="msg-sender">SANDRO IA</div>
+        <div class="bubble">Oi! Sou o Sandro, sua IA pessoal 😊 Pode me falar de tudo — digita ou clica no 🎤 pra usar a voz. Como posso te ajudar?</div>
+      </div>
+    </div>
+    <div class="inp-area">
+      <textarea class="inp-box" id="ai-in" placeholder="Fale comigo..." rows="1" onkeydown="onKey(event,'ai')" oninput="resize(this)"></textarea>
+      <button class="send" onclick="sendAI()">➤</button>
+    </div>
+  </div>
+
+  <!-- CHAT UNIVERSAL -->
+  <div class="panel" id="panel-public">
+    <div class="ch">
+      <div>
+        <div class="ch-title">Chat Universal</div>
+        <div class="ch-sub">MENSAGENS EM TEMPO REAL COM TODOS</div>
+      </div>
+    </div>
+    <div class="msgs" id="pub-msgs">
+      <div style="text-align:center;font-size:11px;color:#bbb;padding:28px;">Conectando ao chat...</div>
+    </div>
+    <div class="inp-area">
+      <textarea class="inp-box" id="pub-in" placeholder="Mensagem para todos..." rows="1" onkeydown="onKey(event,'public')" oninput="resize(this)"></textarea>
+      <button class="send" onclick="sendPub()">➤</button>
+    </div>
+  </div>
+
+  <!-- CHAT PRIVADO -->
+  <div class="panel" id="panel-private">
+    <div class="ch">
+      <div>
+        <div class="ch-title" id="priv-title">Chat Privado</div>
+        <div class="ch-sub">SELECIONE UM USUÁRIO ONLINE NA SIDEBAR</div>
+      </div>
+    </div>
+    <div class="msgs" id="priv-msgs">
+      <div style="text-align:center;font-size:11px;color:#bbb;padding:36px 18px;">Clique em um usuário online na barra lateral para conversar em privado.</div>
+    </div>
+    <div class="inp-area">
+      <textarea class="inp-box" id="priv-in" placeholder="Mensagem privada..." rows="1" onkeydown="onKey(event,'private')" oninput="resize(this)"></textarea>
+      <button class="send" onclick="sendPriv()">➤</button>
+    </div>
+  </div>
+
+  <!-- ASSISTENTE WEB -->
+  <div class="panel" id="panel-assistant">
+    <div class="ch">
+      <div>
+        <div class="ch-title">Assistente Web</div>
+        <div class="ch-sub">SANDRO AGINDO EM OUTROS SITES POR VOCÊ</div>
+      </div>
+    </div>
+    <div class="msgs" id="ast-msgs">
+      <div class="msg ai">
+        <div class="msg-sender">SANDRO IA</div>
+        <div class="bubble">
+          Posso executar ações em outros sites por você!<br><br>
+          ✅ "Abra o WhatsApp Web e mande oi pro João"<br>
+          ✅ "Pesquise no Google receitas de macarrão"<br>
+          ✅ "Preencha esse formulário com meus dados"<br><br>
+          <strong>Para usar nos sites:</strong> instale a extensão Chrome da pasta <code>extensao/</code>.
+        </div>
+      </div>
+    </div>
+    <div class="inp-area">
+      <textarea class="inp-box" id="ast-in" placeholder="Me peça algo pra fazer num site..." rows="1" onkeydown="onKey(event,'assistant')" oninput="resize(this)"></textarea>
+      <button class="send" onclick="sendAst()">➤</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { getDatabase, ref, set, push, onValue, onDisconnect } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+const FB = { apiKey:"AIzaSyD4SyFFNHI1k2Nn0LWlGwXBpK5LG9q6rXg", authDomain:"vit4lynv-1fb7c.firebaseapp.com", databaseURL:"https://vit4lynv-1fb7c-default-rtdb.firebaseio.com", projectId:"vit4lynv-1fb7c", storageBucket:"vit4lynv-1fb7c.firebasestorage.app", messagingSenderId:"418954009350", appId:"1:418954009350:web:994b5251889e6df8815c87" };
+
+const app = initializeApp(FB);
+const auth = getAuth(app);
+const db = getDatabase(app);
+
+onAuthStateChanged(auth, u => {
+  if (!u) { window.location.href='/index.html'; return; }
+  const name = u.displayName || u.email.split('@')[0];
+  window._u = { uid:u.uid, name, photo:u.photoURL };
+  document.getElementById('sb-name').textContent = name;
+  const av = document.getElementById('sb-av');
+  if (u.photoURL) av.innerHTML=`<img src="${u.photoURL}">`;
+  else av.textContent = name[0].toUpperCase();
+
+  // Presença
+  const pRef = ref(db, `online/${u.uid}`);
+  set(pRef, { uid:u.uid, name, photo:u.photoURL||null });
+  onDisconnect(pRef).remove();
+
+  // Online list
+  onValue(ref(db,'online'), snap => {
+    const list=[]; snap.forEach(c=>list.push(c.val()));
+    const el=document.getElementById('sb-online');
+    const others=list.filter(x=>x.uid!==u.uid);
+    if(!others.length){ el.innerHTML='<div style="padding:6px 8px;font-size:10px;opacity:.3;">Ninguém mais online</div>'; return; }
+    el.innerHTML=others.map(x=>`<div class="o-user" onclick="startPriv('${x.uid}','${x.name}')"><div class="o-dot"></div><div class="o-name">${x.name}</div></div>`).join('');
+  });
+
+  // Chat público
+  onValue(ref(db,'pub_chat'), snap => {
+    const el=document.getElementById('pub-msgs'); el.innerHTML='';
+    const all=[]; snap.forEach(c=>all.push(c.val()));
+    all.slice(-60).forEach(m => addMsg('pub-msgs', m.uid===u.uid?'VOCÊ':m.name, m.text, m.uid===u.uid?'user':'other'));
+  });
+
+  // Chat privado
+  onValue(ref(db,`priv/${u.uid}`), snap => {
+    snap.forEach(c => {
+      const m=c.val();
+      if(!m._r){
+        set(ref(db,`priv/${u.uid}/${c.key}/_r`),true);
+        if(window._tab==='private'&&window._pt?.uid===m.from) addMsg('priv-msgs',m.name,m.text,'other');
+        else toast(`📬 ${m.name}: ${String(m.text).substring(0,28)}...`);
+      }
+    });
+  });
+
+  window._pushPub = t => push(ref(db,'pub_chat'),{uid:u.uid,name,text:t,ts:Date.now()});
+  window._pushPriv = (to,t) => push(ref(db,`priv/${to}`),{from:u.uid,name,text:t,ts:Date.now(),_r:false});
+});
+
+window.doLogout = async () => {
+  if(window._u) await set(ref(db,`online/${window._u.uid}`),null).catch(()=>{});
+  await signOut(auth);
+  window.location.href='/index.html';
+};
+</script>
+
+<!-- APP LOGIC -->
+<script>
+// ══ CONFIG ══
+// IMPORTANTE: Após fazer deploy na Vercel, substitua esta URL pela sua URL real da Vercel
+// Exemplo: 'https://sandrovellari-ia.vercel.app'
+// Por enquanto usa fallback demo direto no browser
+const VERCEL_URL = window._vercelUrl || 'https://sandrovellari-ia.vercel.app';
+const GROQ_DIRECT = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_KEY = ''; // NUNCA exponha chaves no frontend!
+
+const mem = [];
+let lastReply = '';
+let ttsOn = true;
+let micOn = false;
+let avOn = false;
+let recog = null;
+let synth = window.speechSynthesis;
+let avState = 'idle';
+let avFrame = null;
+window._tab = 'ai';
+window._pt = null;
+
+// ══ API CALL ══
+// Tenta Vercel primeiro → fallback CORS direto → fallback demo
+async function callAI(messages, mode) {
+  const system = mode === 'assistant'
+    ? 'Você é Sandro IA no modo assistente web. Execute tarefas em sites. Quando relevante, gere código JS dentro de <script_action>CODIGO</script_action>. Responda em português de forma objetiva.'
+    : `Você é Sandro IA, IA humanizada, calorosa e natural. Fale em português brasileiro como um amigo próximo. O usuário se chama ${window._u?.name||'amigo'}. NUNCA diga "Entendi! Estou processando". Responda diretamente de forma natural e humana.`;
+
+  // Tentativa 1: Backend Vercel (sem CORS)
+  try {
+    const r = await fetch(`${VERCEL_URL}/api/chat`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ messages, system, mode }),
+      signal: AbortSignal.timeout(12000)
+    });
+    if (r.ok) {
+      const d = await r.json();
+      if (d.reply) {
+        setBadge(d.source === 'groq' ? 'groq' : 'demo');
+        return d.reply;
+      }
+    }
+  } catch(e) { console.log('Vercel indisponível, tentando direto...'); }
+
+  // Tentativa 2: Groq direto (pode ter CORS, mas funciona em alguns casos)
+  try {
+    const r = await fetch(GROQ_DIRECT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':`Bearer ${GROQ_KEY}`},
+      body:JSON.stringify({ model:'llama3-70b-8192', messages:[{role:'system',content:system},...messages], temperature:0.88, max_tokens:1024 }),
+      signal: AbortSignal.timeout(10000)
+    });
+    if (r.ok) {
+      const d = await r.json();
+      const reply = d.choices?.[0]?.message?.content;
+      if (reply) { setBadge('groq'); return reply; }
+    }
+  } catch(e) { console.log('Groq direto bloqueado (CORS), usando demo...'); }
+
+  // Tentativa 3: Demo local
+  setBadge('demo');
+  return demoReply(messages[messages.length-1]?.content || '');
+}
+
+function setBadge(type) {
+  const b = document.getElementById('api-badge');
+  b.textContent = type === 'groq' ? '● Groq IA' : '● Demo';
+  b.className = `api-badge ${type}`;
+}
+
+function demoReply(text) {
+  const t = text.toLowerCase();
+  const name = window._u?.name || 'amigo';
+  if(t.match(/^(oi|olá|ola|ei|hey|hello|opa)/)) return `Oi ${name}! Que bom te ver! Como você tá hoje? Pode me contar qualquer coisa 😊`;
+  if(t.includes('tudo') || t.includes('como vai') || t.includes('como vc')) return `Estou ótimo, obrigado por perguntar! E você, ${name}, como está? Hoje posso te ajudar com o que precisar!`;
+  if(t.includes('seu nome') || t.includes('quem é') || t.includes('quem vc')) return 'Sou o Sandro, sua IA pessoal! Fui criado pra ser seu companheiro digital. Posso conversar, ajudar em tarefas, e muito mais!';
+  if(t.includes('hora') || t.includes('que horas')) return `Agora são ${new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}. Precisa de algo mais?`;
+  if(t.includes('obrigad')) return `De nada, ${name}! Estou sempre aqui quando precisar 😊`;
+  if(t.includes('tchau') || t.includes('até')) return `Até logo, ${name}! Foi um prazer conversar. Volte sempre! 👋`;
+  if(t.includes('piada') || t.includes('conta uma')) return 'Por que o computador foi ao médico? Porque estava com vírus! 😄 Quer ouvir outra?';
+  if(t.includes('ajud')) return `Claro que posso te ajudar, ${name}! Me conta mais detalhes do que você precisa.`;
+  return `Entendi, ${name}! Sobre "${text.substring(0,40)}..." — posso te ajudar com isso sim! Me conta mais detalhes pra eu te dar uma resposta melhor. O que você precisa exatamente?`;
+}
+
+// Anti-repetição
+function isDupe(r) {
+  if (!lastReply) return false;
+  const c = s => s.toLowerCase().replace(/[^a-z0-9 ]/g,'').trim();
+  if (c(r) === c(lastReply)) return true;
+  const wa = new Set(c(r).split(' ').filter(w=>w.length>4));
+  const wb = new Set(c(lastReply).split(' ').filter(w=>w.length>4));
+  let n=0; wa.forEach(w=>{ if(wb.has(w)) n++; });
+  return n/Math.max(wa.size,wb.size,1) > 0.72;
+}
+
+// ══ SEND AI ══
+async function sendAI() {
+  const inp = document.getElementById('ai-in');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value=''; resize(inp);
+
+  addMsg('ai-msgs','VOCÊ',text,'user');
+  mem.push({role:'user',content:text});
+  if(mem.length>20) mem.splice(0,mem.length-20);
+
+  setAvState('thinking');
+  showTyping('ai-msgs');
+
+  let reply = await callAI([...mem], 'chat');
+
+  if (isDupe(reply)) {
+    mem.push({role:'assistant',content:reply});
+    mem.push({role:'user',content:'[responda diferente, não repita]'});
+    reply = await callAI([...mem], 'chat');
+    mem.pop(); mem.pop();
+  }
+
+  hideTyping();
+  lastReply = reply;
+  mem.push({role:'assistant',content:reply});
+  setAvState('speaking');
+  addMsg('ai-msgs','SANDRO IA',reply,'ai');
+  if(ttsOn) speak(reply, ()=>setAvState('idle'));
+  else setAvState('idle');
+}
+
+// ══ SEND PUBLIC ══
+function sendPub() {
+  const inp=document.getElementById('pub-in');
+  const t=inp.value.trim(); if(!t) return;
+  inp.value='';
+  window._pushPub?.(t);
+}
+
+// ══ SEND PRIVATE ══
+function sendPriv() {
+  const inp=document.getElementById('priv-in');
+  const t=inp.value.trim(); if(!t) return;
+  if(!window._pt){toast('Selecione um usuário online primeiro');return;}
+  inp.value='';
+  window._pushPriv?.(window._pt.uid,t);
+  addMsg('priv-msgs','VOCÊ',t,'user');
+}
+
+function startPriv(uid,name) {
+  window._pt={uid,name};
+  document.getElementById('priv-title').textContent=`Chat com ${name}`;
+  document.getElementById('priv-msgs').innerHTML=`<div style="text-align:center;font-size:11px;color:#bbb;padding:18px;">Conversa com ${name}</div>`;
+  go('private');
+}
+
+// ══ SEND ASSISTANT ══
+async function sendAst() {
+  const inp=document.getElementById('ast-in');
+  const text=inp.value.trim(); if(!text) return;
+  inp.value='';
+  addMsg('ast-msgs','VOCÊ',text,'user');
+  showTyping('ast-msgs');
+  const reply = await callAI([{role:'user',content:text}],'assistant');
+  hideTyping();
+  addMsg('ast-msgs','SANDRO IA',reply,'ai');
+}
+
+// ══ TABS ══
+function go(tab) {
+  window._tab=tab;
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+}
+
+// ══ MIC ══
+function toggleMic() { micOn?stopMic():startMic(); }
+function startMic() {
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){toast('Reconhecimento de voz não suportado');return;}
+  if(synth?.speaking) synth.cancel();
+  recog=new SR(); recog.lang='pt-BR'; recog.continuous=false; recog.interimResults=false;
+  recog.onstart=()=>{micOn=true;document.getElementById('btn-mic').classList.add('pulse');document.getElementById('vbar').classList.add('show');document.getElementById('vbar-txt').textContent='Ouvindo... fale agora!';setAvState('listening');};
+  recog.onresult=e=>{document.getElementById('ai-in').value=e.results[0][0].transcript;stopMic();sendAI();};
+  recog.onerror=recog.onend=()=>stopMic();
+  recog.start();
+}
+function stopMic(){micOn=false;try{recog?.stop();}catch(e){}recog=null;document.getElementById('btn-mic').classList.remove('pulse');document.getElementById('vbar').classList.remove('show');if(avState==='listening')setAvState('idle');}
+
+// ══ TTS ══
+function toggleTTS(){ttsOn=!ttsOn;document.getElementById('btn-tts').classList.toggle('on',ttsOn);toast(ttsOn?'🔊 Voz ativada':'🔇 Voz desativada');}
+function speak(text,cb){
+  if(!synth){cb?.();return;}
+  synth.cancel();
+  const u=new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g,'').replace(/[*_`]/g,''));
+  u.lang='pt-BR'; u.rate=0.95; u.pitch=1; u.volume=1;
+  const vs=synth.getVoices();
+  const ptv=vs.find(v=>v.lang==='pt-BR')||vs.find(v=>v.lang.startsWith('pt'));
+  if(ptv) u.voice=ptv;
+  u.onend=u.onerror=()=>cb?.();
+  synth.speak(u);
+}
+if(synth){synth.onvoiceschanged=()=>synth.getVoices();synth.getVoices();}
+
+// ══ AVATAR ══
+function toggleAv(){avOn=!avOn;document.getElementById('btn-av').classList.toggle('on',avOn);document.getElementById('av-wrap').classList.toggle('show',avOn);if(avOn)startAvLoop();else{cancelAnimationFrame(avFrame);avFrame=null;}}
+function setAvState(s){avState=s;const el=document.getElementById('av-state');if(el)el.textContent={idle:'esperando...',listening:'ouvindo...',thinking:'pensando...',speaking:'falando...'}[s]||'esperando...';}
+function startAvLoop(){
+  const c=document.getElementById('avcanvas'),ctx=c.getContext('2d');
+  let t=0,mo=0;
+  function draw(){
+    if(!avOn)return; t++;
+    ctx.clearRect(0,0,72,72);
+    ctx.fillStyle='#000'; ctx.fillRect(0,0,72,72);
+    ctx.beginPath(); ctx.arc(36,34,24,0,Math.PI*2); ctx.fillStyle='#fff'; ctx.fill();
+    const blink=t%100<4, ey=blink?1:(avState==='listening'?6:4);
+    ctx.fillStyle='#000';
+    ctx.beginPath(); ctx.ellipse(26,29,3,ey,0,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(46,29,3,ey,0,0,Math.PI*2); ctx.fill();
+    mo=avState==='speaking'?3+Math.sin(t*.28)*4:avState==='thinking'?1+Math.sin(t*.1)*.8:mo*.82;
+    ctx.beginPath(); ctx.ellipse(36,45,8,Math.max(1,mo),0,0,Math.PI*2); ctx.fillStyle='#000'; ctx.fill();
+    if(avState==='listening'){ctx.beginPath();ctx.arc(36,34,26+Math.sin(t*.15)*2,0,Math.PI*2);ctx.strokeStyle=`rgba(74,222,128,${.35+Math.sin(t*.1)*.25})`;ctx.lineWidth=2;ctx.stroke();}
+    avFrame=requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ══ HELPERS ══
+function addMsg(id,sender,text,type){
+  const c=document.getElementById(id),d=document.createElement('div');
+  d.className=`msg ${type}`;
+  const t=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  d.innerHTML=`<div class="msg-sender">${sender}</div><div class="bubble">${esc(text)}</div><div class="msg-time">${t}</div>`;
+  c.appendChild(d); sb(id);
+}
+function showTyping(id){hideTyping();const c=document.getElementById(id),d=document.createElement('div');d.id='typing-el';d.innerHTML='<div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';c.appendChild(d);sb(id);}
+function hideTyping(){document.getElementById('typing-el')?.remove();}
+function sb(id){const el=document.getElementById(id);if(el)el.scrollTop=el.scrollHeight;}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
+function onKey(e,m){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();({ai:sendAI,public:sendPub,private:sendPriv,assistant:sendAst})[m]?.();}}
+function resize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,130)+'px';}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+// Expose
+window.go=go;window.sendAI=sendAI;window.sendPub=sendPub;window.sendPriv=sendPriv;window.sendAst=sendAst;
+window.toggleMic=toggleMic;window.toggleTTS=toggleTTS;window.toggleAv=toggleAv;
+window.startPriv=startPriv;window.onKey=onKey;window.resize=resize;
+</script>
+</body>
+</html>

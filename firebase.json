@@ -1,0 +1,35 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "server.js",
+      "package.json",
+      "package-lock.json",
+      "Dockerfile",
+      "README.md",
+      "database.rules.json",
+      "cloudbuild.yaml",
+      "deploy_cloudrun.sh",
+      "test_api.js",
+      "backend/**",
+      "api/**",
+      "functions/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/app.html",
+        "destination": "/app.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

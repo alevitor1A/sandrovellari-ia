@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "online": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "public_chat": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "private": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null"
+      }
+    }
+  }
+}

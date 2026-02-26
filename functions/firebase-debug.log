@@ -1,0 +1,308 @@
+[debug] [2026-02-26T00:38:29.468Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:38:29.474Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting functions --debug
+[debug] [2026-02-26T00:38:29.474Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:38:29.474Z] Platform:      win32
+[debug] [2026-02-26T00:38:29.474Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:38:29.475Z] Time:          Wed Feb 25 2026 21:38:29 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:38:29.475Z] ----------------------------------------------------------------------
+[debug] 
+[error] 
+[error] Error: Cannot understand what targets to deploy/serve. No targets in firebase.json match '--only hosting functions'. If you are using PowerShell make sure you place quotes around any comma-separated lists (ex: --only "functions,firestore").
+[debug] [2026-02-26T00:38:49.174Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:38:49.180Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting functions --debug
+[debug] [2026-02-26T00:38:49.180Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:38:49.181Z] Platform:      win32
+[debug] [2026-02-26T00:38:49.181Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:38:49.181Z] Time:          Wed Feb 25 2026 21:38:49 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:38:49.181Z] ----------------------------------------------------------------------
+[debug] 
+[error] 
+[error] Error: Cannot understand what targets to deploy/serve. No targets in firebase.json match '--only hosting functions'. If you are using PowerShell make sure you place quotes around any comma-separated lists (ex: --only "functions,firestore").
+[debug] [2026-02-26T00:39:10.023Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:39:10.028Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting,functions --debug
+[debug] [2026-02-26T00:39:10.029Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:39:10.029Z] Platform:      win32
+[debug] [2026-02-26T00:39:10.029Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:39:10.029Z] Time:          Wed Feb 25 2026 21:39:10 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:39:10.030Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-26T00:39:16.775Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-26T00:39:16.778Z] > authorizing via signed-in user (alevitorpereira813@gmail.com)
+[debug] [2026-02-26T00:39:16.778Z] [iam] checking project vit4lynv-1fb7c for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-02-26T00:39:16.781Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:16.781Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:16.783Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions [none]
+[debug] [2026-02-26T00:39:16.784Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:39:16.785Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-26T00:39:18.264Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions 200
+[debug] [2026-02-26T00:39:18.264Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-02-26T00:39:18.266Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:18.266Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:18.267Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vit4lynv-1fb7c [none]
+[debug] [2026-02-26T00:39:18.790Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vit4lynv-1fb7c 200
+[debug] [2026-02-26T00:39:18.790Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vit4lynv-1fb7c {"projectId":"vit4lynv-1fb7c","projectNumber":"418954009350","displayName":"VIT4LYNV","name":"projects/vit4lynv-1fb7c","resources":{"hostingSite":"vit4lynv-1fb7c","realtimeDatabaseInstance":"vit4lynv-1fb7c-default-rtdb"},"state":"ACTIVE","etag":"1_92d8e23a-2c23-4332-92c6-057f00bcb333"}
+[info] 
+[info] === Deploying to 'vit4lynv-1fb7c'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-02-26T00:39:18.800Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:18.800Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:18.801Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions [none]
+[debug] [2026-02-26T00:39:18.801Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2026-02-26T00:39:20.610Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions 200
+[debug] [2026-02-26T00:39:20.610Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions {"name":"projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[vit4lynv-1fb7c]: beginning deploy... 
+[info] i  hosting[vit4lynv-1fb7c]: found 12 files in . 
+[debug] [2026-02-26T00:39:20.643Z] [hosting] uploading with 200 concurrency
+[debug] [2026-02-26T00:39:20.664Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:20.665Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:20.667Z] [hosting] hash cache [] stored for 12 files
+[debug] [2026-02-26T00:39:20.668Z] [hosting][hash queue][FINAL] {"max":18,"min":1,"avg":4.083333333333333,"active":0,"complete":12,"success":12,"errored":0,"retried":0,"total":12,"elapsed":22}
+[debug] [2026-02-26T00:39:20.668Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c:populateFiles [none]
+[debug] [2026-02-26T00:39:20.669Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c:populateFiles {"files":{"/popup.html":"0f9dffbe543713fc4ad29ed968e06e80617f354024be487da234d8413731f632","/manifest.json":"e209019ad3a3fe1adc3ee2dd545f97e53dfdfc493bbb20340ce7be2a965e9b05","/index.html":"75c93755aa237dd70b9191fbe7f179d75cfb5868b7de338789dc6abb1ee8ad1f","/deploy_cloudrun.sh":"2bacf0edd669c21f46f91dd0824f613b40b3f21f636f94f7676f0df97ee164ef","/database.rules.json":"b03a65ebeb39ee6e7c57b17f3680c6420c49fbefe750bd7792bbcb0bb9b352e4","/content.js":"103c7b509f9cf1efc698cd2ec9b50a53f910ea3c0910fad25ff48e8a28da1777","/cloudbuild.yaml":"5ae09be771bd772d0d4a97d2c1490824b2f790fb7e3920f88e7c77e94ab48925","/background.js":"380b6cd3f20ec1d00202125b76dea422f6fdb85f5eb49005c7c9794cab3fc771","/functions/package.json":"00b3ea96be11fdfc59554d062793dbef56527836fe1e5cca4aeea16b9010502c","/functions/index.js":"e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9","/app.html":"b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe","/popup.js":"09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674"}}
+[debug] [2026-02-26T00:39:21.356Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c:populateFiles 200
+[debug] [2026-02-26T00:39:21.356Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c:populateFiles {"uploadRequiredHashes":["b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe","e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9","09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files"}
+[debug] [2026-02-26T00:39:21.358Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.358Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.358Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.359Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.359Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.359Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:21.360Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe [none]
+[debug] [2026-02-26T00:39:21.360Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe [stream]
+[debug] [2026-02-26T00:39:21.362Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9 [none]
+[debug] [2026-02-26T00:39:21.363Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9 [stream]
+[debug] [2026-02-26T00:39:21.365Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674 [none]
+[debug] [2026-02-26T00:39:21.366Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674 [stream]
+[debug] [2026-02-26T00:39:21.368Z] [hosting][populate queue][FINAL] {"max":696,"min":696,"avg":696,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":704}
+[debug] [2026-02-26T00:39:21.369Z] [hosting] uploads queued: 3
+[info] i  hosting: uploading new files [0/3] (0%) 
+[debug] [2026-02-26T00:39:22.681Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe 200
+[debug] [2026-02-26T00:39:22.683Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/b5a9aa6caba27cbb138830a86a2cd2f85398140e76ae0afc0a5266db6fc7a2fe [stream]
+[debug] [2026-02-26T00:39:22.965Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9 200
+[debug] [2026-02-26T00:39:22.966Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/e46831936290374f044c421ffbe041260fe684219323756983fed2d9fc551ef9 [stream]
+[debug] [2026-02-26T00:39:23.381Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674 200
+[debug] [2026-02-26T00:39:23.388Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/vit4lynv-1fb7c/versions/6bd629907980f19c/files/09bae107880c794ab69adc85815a7fc49594b0fb07420a687b417743fd868674 [stream]
+[debug] [2026-02-26T00:39:23.389Z] [hosting][upload queue][FINAL] {"max":2030,"min":1327,"avg":1655,"active":0,"complete":3,"success":3,"errored":0,"retried":0,"total":3,"elapsed":2032}
+[info] i  hosting: upload complete 
+[info] +  hosting[vit4lynv-1fb7c]: file upload complete 
+[debug] [2026-02-26T00:39:23.393Z] [hosting] deploy completed after 2778ms
+[debug] [2026-02-26T00:39:23.395Z] [
+  {
+    "config": {
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**",
+        "server.js",
+        "package.json",
+        "package-lock.json",
+        "Dockerfile",
+        "README.md",
+        "README (1).md",
+        "README (2).md"
+      ],
+      "rewrites": [
+        {
+          "source": "/api/**",
+          "function": {
+            "functionId": "api"
+          }
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "vit4lynv-1fb7c"
+    },
+    "version": "projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c"
+  }
+]
+[info] i  hosting[vit4lynv-1fb7c]: finalizing version... 
+[debug] [2026-02-26T00:39:23.429Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:23.430Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:23.431Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/vit4lynv-1fb7c/locations/-/functions [none]
+[debug] [2026-02-26T00:39:24.318Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/vit4lynv-1fb7c/locations/-/functions 200
+[debug] [2026-02-26T00:39:24.318Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/vit4lynv-1fb7c/locations/-/functions {}
+[debug] [2026-02-26T00:39:24.319Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:24.319Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:24.320Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/vit4lynv-1fb7c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2026-02-26T00:39:25.740Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/vit4lynv-1fb7c/locations/-/functions 200
+[debug] [2026-02-26T00:39:25.741Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/vit4lynv-1fb7c/locations/-/functions {}
+[warn] !  hosting[vit4lynv-1fb7c]: Unable to find a valid endpoint for function `api`, but still including it in the config 
+[debug] [2026-02-26T00:39:25.744Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:25.744Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:25.744Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions/6bd629907980f19c updateMask=status%2Cconfig
+[debug] [2026-02-26T00:39:25.745Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions/6bd629907980f19c {"status":"FINALIZED","config":{"rewrites":[{"glob":"/api/**","function":"api"},{"glob":"**","path":"/index.html"}]}}
+[debug] [2026-02-26T00:39:26.601Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions/6bd629907980f19c 200
+[debug] [2026-02-26T00:39:26.601Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/versions/6bd629907980f19c {"name":"projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c","status":"FINALIZED","config":{"rewrites":[{"glob":"/api/**","function":"api"},{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-02-26T00:39:20.711125Z","createUser":{"email":"alevitorpereira813@gmail.com"},"finalizeTime":"2026-02-26T00:39:27.234557Z","finalizeUser":{"email":"alevitorpereira813@gmail.com"}}
+[debug] [2026-02-26T00:39:26.602Z] [hosting] finalized version for vit4lynv-1fb7c:[object Object]
+[info] +  hosting[vit4lynv-1fb7c]: version finalized 
+[info] i  hosting[vit4lynv-1fb7c]: releasing new version... 
+[debug] [2026-02-26T00:39:26.603Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:26.603Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:39:26.603Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/channels/live/releases versionName=projects%2F418954009350%2Fsites%2Fvit4lynv-1fb7c%2Fversions%2F6bd629907980f19c
+[debug] [2026-02-26T00:39:26.604Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/channels/live/releases {}
+[debug] [2026-02-26T00:39:27.424Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/channels/live/releases 200
+[debug] [2026-02-26T00:39:27.424Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/vit4lynv-1fb7c/channels/live/releases {"name":"projects/418954009350/sites/vit4lynv-1fb7c/channels/live/releases/1772066367342000","version":{"name":"projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c","status":"FINALIZED","config":{"rewrites":[{"glob":"/api/**","function":"api"},{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-02-26T00:39:20.711125Z","createUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"},"finalizeTime":"2026-02-26T00:39:27.234557Z","finalizeUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"}},"type":"DEPLOY","releaseTime":"2026-02-26T00:39:27.342Z","releaseUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"}}
+[debug] [2026-02-26T00:39:27.426Z] [hosting] release: {"name":"projects/418954009350/sites/vit4lynv-1fb7c/channels/live/releases/1772066367342000","version":{"name":"projects/418954009350/sites/vit4lynv-1fb7c/versions/6bd629907980f19c","status":"FINALIZED","config":{"rewrites":[{"glob":"/api/**","function":"api"},{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2026-02-26T00:39:20.711125Z","createUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"},"finalizeTime":"2026-02-26T00:39:27.234557Z","finalizeUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"}},"type":"DEPLOY","releaseTime":"2026-02-26T00:39:27.342Z","releaseUser":{"email":"alevitorpereira813@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIYIehRMhChJWXUPg5IF_bXJvygGrbpxJZu911KEbaSpms63Xa7oQ"}}
+[info] +  hosting[vit4lynv-1fb7c]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/vit4lynv-1fb7c/overview
+[info] Hosting URL: https://vit4lynv-1fb7c.web.app
+[debug] [2026-02-26T00:41:26.358Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:41:26.363Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2026-02-26T00:41:26.364Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:41:26.364Z] Platform:      win32
+[debug] [2026-02-26T00:41:26.364Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:41:26.365Z] Time:          Wed Feb 25 2026 21:41:26 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:41:26.365Z] ----------------------------------------------------------------------
+[debug] 
+[error] 
+[error] Error: Cannot understand what targets to deploy/serve. No targets in firebase.json match '--only functions'. If you are using PowerShell make sure you place quotes around any comma-separated lists (ex: --only "functions,firestore").
+[debug] [2026-02-26T00:41:44.652Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:41:44.658Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2026-02-26T00:41:44.658Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:41:44.658Z] Platform:      win32
+[debug] [2026-02-26T00:41:44.659Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:41:44.659Z] Time:          Wed Feb 25 2026 21:41:44 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:41:44.659Z] ----------------------------------------------------------------------
+[debug] 
+[error] 
+[error] Error: Cannot understand what targets to deploy/serve. No targets in firebase.json match '--only functions'. If you are using PowerShell make sure you place quotes around any comma-separated lists (ex: --only "functions,firestore").
+[debug] [2026-02-26T00:42:15.491Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:42:15.497Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2026-02-26T00:42:15.497Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:42:15.497Z] Platform:      win32
+[debug] [2026-02-26T00:42:15.497Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:42:15.498Z] Time:          Wed Feb 25 2026 21:42:15 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:42:15.498Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-26T00:42:19.939Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-26T00:42:19.942Z] > authorizing via signed-in user (alevitorpereira813@gmail.com)
+[debug] [2026-02-26T00:42:19.942Z] [iam] checking project vit4lynv-1fb7c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-02-26T00:42:19.944Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:19.945Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:19.947Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions [none]
+[debug] [2026-02-26T00:42:19.948Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:42:19.949Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-02-26T00:42:20.916Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions 200
+[debug] [2026-02-26T00:42:20.917Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-02-26T00:42:20.918Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:20.918Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:20.918Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-02-26T00:42:20.918Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-02-26T00:42:21.886Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-02-26T00:42:21.886Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'vit4lynv-1fb7c'...
+[info] 
+[info] i  deploying functions 
+[debug] [2026-02-26T00:42:21.891Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:21.891Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:21.892Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c [none]
+[debug] [2026-02-26T00:42:22.082Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c 200
+[debug] [2026-02-26T00:42:22.082Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c {"projectNumber":"418954009350","projectId":"vit4lynv-1fb7c","lifecycleState":"ACTIVE","name":"VIT4LYNV","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-09-22T05:17:46.765808Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2026-02-26T00:42:22.086Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:22.086Z] Checked if tokens are valid: true, expires at: 1772068128757
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-02-26T00:42:22.087Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:22.088Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:22.088Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com [none]
+[debug] [2026-02-26T00:42:22.088Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:42:22.090Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com [none]
+[debug] [2026-02-26T00:42:22.092Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:42:23.181Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com 200
+[debug] [2026-02-26T00:42:23.181Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com [omitted]
+[warn] !  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2026-02-26T00:42:23.182Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:23.183Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:23.183Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2026-02-26T00:42:23.183Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:42:23.187Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com 200
+[debug] [2026-02-26T00:42:23.188Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com [omitted]
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2026-02-26T00:42:23.188Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:23.188Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:42:23.189Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2026-02-26T00:42:23.189Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:42:23.585Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable 400
+[debug] [2026-02-26T00:42:23.586Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable [omitted]
+[error] 
+[error] Error: Your project vit4lynv-1fb7c must be on the Blaze (pay-as-you-go) plan to complete this command. Required API cloudbuild.googleapis.com can't be enabled until the upgrade is complete. To upgrade, visit the following URL:
+
+https://console.firebase.google.com/project/vit4lynv-1fb7c/usage/details
+[debug] [2026-02-26T00:43:07.302Z] ----------------------------------------------------------------------
+[debug] [2026-02-26T00:43:07.308Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2026-02-26T00:43:07.308Z] CLI Version:   15.7.0
+[debug] [2026-02-26T00:43:07.309Z] Platform:      win32
+[debug] [2026-02-26T00:43:07.309Z] Node Version:  v24.13.0
+[debug] [2026-02-26T00:43:07.309Z] Time:          Wed Feb 25 2026 21:43:07 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-02-26T00:43:07.309Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-26T00:43:11.650Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-26T00:43:11.652Z] > authorizing via signed-in user (alevitorpereira813@gmail.com)
+[debug] [2026-02-26T00:43:11.652Z] [iam] checking project vit4lynv-1fb7c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-02-26T00:43:11.654Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:11.655Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:11.657Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions [none]
+[debug] [2026-02-26T00:43:11.657Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:43:11.658Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-02-26T00:43:12.607Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions 200
+[debug] [2026-02-26T00:43:12.608Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-02-26T00:43:12.608Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:12.609Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:12.609Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-02-26T00:43:12.609Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-02-26T00:43:13.456Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-02-26T00:43:13.457Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/vit4lynv-1fb7c/serviceAccounts/vit4lynv-1fb7c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'vit4lynv-1fb7c'...
+[info] 
+[info] i  deploying functions 
+[debug] [2026-02-26T00:43:13.461Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:13.461Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:13.462Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c [none]
+[debug] [2026-02-26T00:43:13.651Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c 200
+[debug] [2026-02-26T00:43:13.652Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/vit4lynv-1fb7c {"projectNumber":"418954009350","projectId":"vit4lynv-1fb7c","lifecycleState":"ACTIVE","name":"VIT4LYNV","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-09-22T05:17:46.765808Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2026-02-26T00:43:13.655Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:13.655Z] Checked if tokens are valid: true, expires at: 1772068128757
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-02-26T00:43:13.656Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:13.656Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:13.657Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com [none]
+[debug] [2026-02-26T00:43:13.657Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:43:13.659Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com [none]
+[debug] [2026-02-26T00:43:13.660Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:43:14.668Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com 200
+[debug] [2026-02-26T00:43:14.668Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com [omitted]
+[warn] !  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2026-02-26T00:43:14.669Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:14.669Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:14.670Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2026-02-26T00:43:14.670Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:43:14.686Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com 200
+[debug] [2026-02-26T00:43:14.686Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com [omitted]
+[warn] !  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2026-02-26T00:43:14.687Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:14.688Z] Checked if tokens are valid: true, expires at: 1772068128757
+[debug] [2026-02-26T00:43:14.688Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2026-02-26T00:43:14.688Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable  x-goog-user-project=vit4lynv-1fb7c
+[debug] [2026-02-26T00:43:15.570Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable 400
+[debug] [2026-02-26T00:43:15.570Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/artifactregistry.googleapis.com:enable [omitted]
+[debug] [2026-02-26T00:43:15.677Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable 400
+[debug] [2026-02-26T00:43:15.677Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/vit4lynv-1fb7c/services/cloudbuild.googleapis.com:enable [omitted]
+[error] 
+[error] Error: Your project vit4lynv-1fb7c must be on the Blaze (pay-as-you-go) plan to complete this command. Required API artifactregistry.googleapis.com can't be enabled until the upgrade is complete. To upgrade, visit the following URL:
+
+https://console.firebase.google.com/project/vit4lynv-1fb7c/usage/details
